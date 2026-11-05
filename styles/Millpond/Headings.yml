@@ -20,13 +20,13 @@ exceptions:
   - sluice
   - pinout
   - testledger
-  - flywheel
+  - boomdrive
   - millpond
   - headwater
   - eddy
   - crew
   - herdr
-  - Flywheel
+  - Boomdrive
   - Claude
   - Claude Code
   - MCP

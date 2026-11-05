@@ -1,6 +1,6 @@
 ---
 title: How it fits
-description: Where millpond sits among headwater, eddy, sluice, crew and Flywheel, and what it never does.
+description: Where millpond sits among headwater, eddy, sluice, crew and Boomdrive, and what it never does.
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -44,9 +44,9 @@ plugins, and millpond is the inbox that joins them.
     calls sluice's. Its curator works an inbox through millpond's tools,
     and its planner turns items into chores and units.
   </Card>
-  <Card title="Flywheel · the umbrella">
+  <Card title="Boomdrive · the umbrella">
     Built later on the same crates as millpond. It reads the same
-    inboxes with no import, and crew becomes Flywheel.
+    inboxes with no import, and crew becomes Boomdrive.
   </Card>
 </CardGrid>
 
@@ -66,21 +66,21 @@ eddy's parts stay theirs and millpond runs them like anyone else's.
     question to a sounding.
   </Card>
   <Card title="With crew">
-    **Inbox:** the partition's flywheel branch in crew's state
+    **Inbox:** the partition's drive branch in crew's state
     repository. **Curates:** crew's curator through the same tools, and
     the operator decides each item on crew's rail. **Items go** to crew's
     planner, then a team, landed by sluice.
   </Card>
-  <Card title="With Flywheel">
+  <Card title="With Boomdrive">
     **Inbox:** the instance's state repository, the same files.
-    **Curates:** Flywheel's curation session. **Items go** to Flywheel's
+    **Curates:** Boomdrive's curation session. **Items go** to Boomdrive's
     units and bolts.
   </Card>
 </CardGrid>
 
 Moving from one setup to the next changes the host and the curator. The
 adapters and the inbox stay where they are, so nothing is captured twice
-and Flywheel imports nothing when it takes over.
+and Boomdrive imports nothing when it takes over.
 
 ## What millpond never does
 
@@ -88,7 +88,7 @@ and Flywheel imports nothing when it takes over.
   capture into signals, and a curation session proposes moves. A model
   runs in those two places and nowhere else.
 - **It never plans across items.** crew's planner orders items across
-  teams today, and Flywheel's does later.
+  teams today, and Boomdrive's does later.
 - **It never works a question.** A sounding does, and millpond keeps the
   conclusion you accept.
 - **It never knows a source.** An adapter lists its source and keys its
@@ -98,10 +98,10 @@ and Flywheel imports nothing when it takes over.
 
 ## Built once, used everywhere
 
-millpond and Flywheel share their foundation, flywheel-next's crates.
+millpond and Boomdrive share their foundation, flywheel-next's crates.
 They hold the capture contract's types and key rules, the signal, move
 and item records, the built-in adapters, the five-field cron schedule
 and the conformance pack, and both hosts take them. One conformance pack
 proves every host and every adapter part. Raw banking, the checks on a
 capture and the verbatim check on a reader's excerpt are millpond's, and
-Flywheel takes them in turn.
+Boomdrive takes them in turn.

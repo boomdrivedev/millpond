@@ -36,7 +36,7 @@ where [sluice](https://github.com/agentplot/sluice) lands it.
 millpond is one of a family. headwater reports releases, eddy lists
 meetings, sounding works one question to a conclusion and sluice lands
 changes. crew runs teams and calls millpond as
-it calls sluice, and Flywheel is built later on the same crates and reads
+it calls sluice, and Boomdrive is built later on the same crates and reads
 the same inboxes.
 
 ## This repository

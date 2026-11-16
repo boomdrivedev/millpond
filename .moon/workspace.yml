@@ -1,6 +1,9 @@
-# moon runs millpond's checks. Each check is tagged with its layer, which a
-# branch's policy will require by tag:
-#   check-fast    the site's prose and its build: seconds
+# moon runs millpond's checks: one project for the site, holding its own
+# checks; the root holds what spans the tree. Each check is tagged with its
+# layer, which a branch's policy requires by tag (.config/sluice.toml):
+#   check-fast    the root's format (treefmt), the README's prose and a new
+#                 place's first commit through the hooks; the site's prose
+#                 and its build: seconds
 # A task whose inputs are identical to a run that passed on this host, in
 # any worktree, replays from .moon/cache/outputs (a link into the git common
 # dir, made by devenv.nix) instead of running again.
@@ -8,6 +11,7 @@ $schema: 'https://moonrepo.dev/schemas/workspace.json'
 
 projects:
   site: 'site'
+  root: '.'
 
 # --affected compares against the merge-base with main.
 vcs:

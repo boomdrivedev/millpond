@@ -3,7 +3,9 @@
 The inbox for events that should change a repository's work: it runs
 adapters, lands each capture once by key, banks raw material off git,
 serves the tools a curation session works through, and sends an item to
-one worktree. Designed, not built.
+one worktree. Its first working version is built: the intake, runs and
+ticks, the keeper's policy and a rule's send to flume, in one Rust crate,
+`crates/millpond`, on weir's crates at one revision of weir's main.
 
 The design is in boomdrivedev/blueprints: the capture design,
 `design/capture/design.md`, and its plan, `plan.md` beside it, from
@@ -52,7 +54,7 @@ branch requires:
 
 | layer | what | who requires it |
 |---|---|---|
-| `check-fast` | the root's format (treefmt), the README's prose (Vale) and a new place's first commit through the hooks; the site's prose (Vale) and its build | every bolt and main |
+| `check-fast` | the root's format (treefmt), the README's prose (Vale) and a new place's first commit through the hooks; the crate's format, lint, typecheck and tests, weir's conformance pack among them; the site's prose (Vale) and its build | every bolt and main |
 
 main and every bolt take changes only through sluice's merge queue,
 which lands a submission once the layers its branch requires pass on
@@ -62,7 +64,8 @@ Run suites through sluice, so the agents on this host take turns under
 its bound: once your work is committed, `sluice exec main` for the
 gate's checks, and while iterating `sluice exec main -- moon run
 <project>:<task>`. The projects are those `.moon/workspace.yml` lists:
-`site` (`site/`, which `.github/workflows/pages.yml` publishes) and
+`millpond` (`crates/millpond`), `site` (`site/`, which
+`.github/workflows/pages.yml` publishes) and
 `root`.
 `devenv shell -- check-fast` runs the fast layer
 (`moon run :#check-fast`). The site's own notes are `site/README.md`.

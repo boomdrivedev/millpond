@@ -1,0 +1,34 @@
+[package]
+name = "millpond"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "The inbox for events that should change a repository's work."
+build = "build.rs"
+
+[[bin]]
+name = "millpond"
+path = "src/main.rs"
+
+[lib]
+doctest = false
+
+[dependencies]
+weir-capture.workspace = true
+weir-signals.workspace = true
+weir-branch.workspace = true
+weir-policy.workspace = true
+weir-cadence.workspace = true
+clap.workspace = true
+jiff.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tempfile.workspace = true
+time.workspace = true
+toml.workspace = true
+
+[dev-dependencies]
+weir-pack.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,29 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+# millpond's crate: the core and the command line, one task per check, each
+# run from the workspace root. Its tests run the binary against scratch
+# repositories, weir's conformance pack among them, with recfix from
+# devenv.nix's recutils, and a fake flume and sluice.
+language: 'rust'
+
+tasks:
+  format:
+    command: 'cargo fmt -p millpond --check'
+    inputs: &inputs ['/crates/millpond/**/*', '/Cargo.toml', '/Cargo.lock', '/devenv.nix', '/devenv.lock', '/.prototools']
+    tags: [check-fast]
+    options: {runFromWorkspaceRoot: true}
+  lint:
+    command: 'cargo clippy -p millpond --all-targets -- -D warnings'
+    inputs: *inputs
+    tags: [check-fast]
+    options: {runFromWorkspaceRoot: true}
+  typecheck:
+    command: 'cargo check -p millpond --all-targets'
+    inputs: *inputs
+    tags: [check-fast]
+    options: {runFromWorkspaceRoot: true}
+  test:
+    command: 'cargo test -p millpond'
+    inputs: *inputs
+    tags: [check-fast]
+    options: {runFromWorkspaceRoot: true}

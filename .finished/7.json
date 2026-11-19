@@ -1,0 +1,26 @@
+{
+  "schema": "sluice/submission@1",
+  "id": 7,
+  "branch": "main",
+  "head": "f456cc0d5af76df1215791bd0a7f9198d4679899",
+  "from": {
+    "agent": "docs/openspec-first-version",
+    "worktree": "pull/4",
+    "head": "docs/openspec-first-version"
+  },
+  "submitted": "2026-11-19T19:03:16Z",
+  "after": [],
+  "priority": 0,
+  "attempt": 2,
+  "state": "landed",
+  "tested": {
+    "combination": "d12f2169d3a26bf2d6ce38e0a3c20603012ed71e",
+    "on": "86936071fbded76dd548167abe6d7fe05d6e6dc3",
+    "submissions": [
+      7
+    ]
+  },
+  "result": "passed",
+  "landed_as": "75160113cd040775010edc68a26a9b6e81e61d5c",
+  "subject": "docs(openspec): millpond's first version as OpenSpec records it"
+}

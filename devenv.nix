@@ -78,6 +78,15 @@ let
       sha256 = "867534ddb678abca7f214bc4706ead0922bd5252ffe8035fc227013f66c8b214";
     };
   };
+  # treefmt's rustfmt: the pinned toolchain's.
+  rustfmt = pkgs.writeShellApplication {
+    name = "rustfmt";
+    text = ''
+      ${activate}
+      exec rustfmt "$@"
+    '';
+  };
+
   valeAsset = valeAssets.${pkgs.stdenv.hostPlatform.system};
   vale = pkgs.stdenvNoCC.mkDerivation {
     pname = "vale";
@@ -92,7 +101,7 @@ let
 in
 {
   # The system tools are this file's, pinned by devenv.lock; moon is
-  # .prototools', installed by the millpond:proto:install task on entering
+  # .prototools', with Rust, installed by the millpond:proto:install task on entering
   # the shell and activated by enterShell. The site's tools are bun, and
   # Playwright with the one browser it drives, from Nix, for the site's
   # screenshots (site/scripts/shots.mjs).
@@ -100,6 +109,9 @@ in
     pkgs.git
     pkgs.jq
     proto
+    # GNU recutils: weir's write protocol holds every record to `recfix`
+    # before it lands, and the crate's tests run it (C.2).
+    pkgs.recutils
     vale
     pkgs.bun
     pkgs.playwright-test
@@ -159,6 +171,7 @@ in
   treefmt.config = {
     imports = [ ./treefmt.nix ];
     projectRootFile = "devenv.nix";
+    programs.rustfmt.package = rustfmt;
   };
 
   scripts.prose = {

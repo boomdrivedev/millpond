@@ -1,0 +1,37 @@
+[workspace]
+resolver = "2"
+members = ["crates/millpond"]
+
+[workspace.package]
+# main gives 0.0.0, the version no release has. A release's tag names the
+# release commit that writes the release's version here and in Cargo.lock
+# (set-version.sh, release-commit.sh), so a build takes its version from
+# the tree alone.
+version = "0.0.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+# The family's shared crates (section 9; C.1, C.2): the capture contract,
+# the inbox's records, the shared-branch write protocol, the cadence, the
+# policy and the conformance pack, at one revision of weir's main, moved
+# together when weir changes.
+weir-capture = { git = "https://github.com/boomdrivedev/weir", rev = "63c995912c82491b8dc8438c34ff834d7d39f2db" }
+weir-signals = { git = "https://github.com/boomdrivedev/weir", rev = "63c995912c82491b8dc8438c34ff834d7d39f2db" }
+weir-branch = { git = "https://github.com/boomdrivedev/weir", rev = "63c995912c82491b8dc8438c34ff834d7d39f2db" }
+weir-policy = { git = "https://github.com/boomdrivedev/weir", rev = "63c995912c82491b8dc8438c34ff834d7d39f2db" }
+weir-cadence = { git = "https://github.com/boomdrivedev/weir", rev = "63c995912c82491b8dc8438c34ff834d7d39f2db" }
+weir-pack = { git = "https://github.com/boomdrivedev/weir", rev = "63c995912c82491b8dc8438c34ff834d7d39f2db" }
+clap = { version = "4", features = ["derive"] }
+jiff = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+time = { version = "0.3", features = ["parsing", "formatting"] }
+toml = "1"
+
+[workspace.lints.clippy]
+too_many_arguments = "allow"
+type_complexity = "allow"
+large_enum_variant = "allow"
+result_large_err = "allow"

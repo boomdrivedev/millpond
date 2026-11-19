@@ -24,9 +24,17 @@ _: {
     "site/**"
     "docs/diagrams/**"
     # Build outputs and caches.
+    "target/**"
     ".devenv/**"
     ".moon/cache/**"
   ];
+
+  # The crate's Rust, with the pinned toolchain's rustfmt (devenv.nix).
+  programs.rustfmt.enable = true;
+  programs.rustfmt.edition = "2021";
+
+  # Cargo.toml, the crate's and every other TOML file.
+  programs.taplo.enable = true;
 
   programs.deadnix.enable = true;
   programs.nixfmt.enable = true;
@@ -37,8 +45,10 @@ _: {
 
   # .prototools is TOML and .versionrc convco's YAML, under names with no
   # extension.
-  programs.taplo.enable = true;
-  settings.formatter.taplo.includes = [ ".prototools" ];
+  settings.formatter.taplo.includes = [
+    "*.toml"
+    ".prototools"
+  ];
   programs.yamlfmt.enable = true;
   settings.formatter.yamlfmt.includes = [ ".versionrc" ];
   programs.yamlfmt.settings.formatter = {

@@ -27,6 +27,18 @@ one thing, reconcile them into one design with one owner the others call
 or cite, and say so in the design. Never fix one tool alone when the
 cause is that the tools differ.
 
+## Specs
+
+**Specs.** `openspec/specs/` holds millpond's capabilities as built, and
+changes only through an OpenSpec change: a proposal, a delta spec, and
+tasks, validated with `openspec validate --strict` and archived with
+`openspec archive`, so the spec reconciles. This holds for a fix or a
+chore too. Where the work changes a requirement, it carries that change
+in the same branch. Never edit a spec file directly. OpenSpec's skills
+and commands under `.claude/` are tracked as the family's pinned
+OpenSpec writes them (`openspec init --tools claude --profile custom`),
+as timber's are.
+
 ## Rules
 
 The rules are in `docs/architecture/`: `core.md` binds wherever a change

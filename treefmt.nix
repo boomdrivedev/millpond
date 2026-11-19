@@ -50,7 +50,11 @@ _: {
     ".prototools"
   ];
   programs.yamlfmt.enable = true;
-  settings.formatter.yamlfmt.includes = [ ".versionrc" ];
+  settings.formatter.yamlfmt.includes = [
+    ".versionrc"
+    # OpenSpec's configuration (openspec/config.yaml).
+    "openspec/*.yaml"
+  ];
   programs.yamlfmt.settings.formatter = {
     type = "basic";
     retain_line_breaks_single = true;

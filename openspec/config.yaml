@@ -1,0 +1,40 @@
+schema: spec-driven
+
+context: |
+  millpond is the inbox for events that should change a repository's work:
+  it runs adapters, lands each capture once by key, banks raw material off
+  git, moves signals by its keeper's policy, and sends an item to one
+  worktree through flume. It is written in Rust, on weir's shared crates,
+  with a site in Astro.
+  The design is boomdrivedev/blueprints design/capture/design.md and its
+  plan, plan.md beside it, and millpond's statement of invariants,
+  design/millpond/requirements.md (local:
+  ~/Code/boomdrive/boomdrivedev/blueprints/design/millpond/requirements.md),
+  with its model, design/millpond/models/. An artifact that rests on a
+  clause cites it by bare number, (130), a profile's section by its
+  letter, (C.5), and a scenario by its name, (S2), and never restates it.
+  A clause of another tool's statement names the tool: (weir 129).
+
+  The rules are docs/architecture/ once written from the statement (plan
+  step P2); until then boomdrivedev/blueprints design/principles.md binds.
+  Decisions are docs/adr/ (MADR, numbered, adrs.toml). Every rule of the
+  capture contract, the records and the policy is weir's; millpond keeps
+  none of its own (section 9). A clause that no longer holds is changed in
+  the statement first, never worked around here.
+
+  The words are the statement's vocabulary (its section 3): specs, design
+  and code use its terms as it defines them and redefine none.
+
+  Every cargo and moon command runs inside devenv shell. Commit by
+  pathspec only: git add <paths>; git commit -m "<subject>" -- <paths>.
+  Conventional Commits, scope the part of the tree touched. main is
+  protected: work on a worktree branch and land with sluice submit main.
+
+rules:
+  proposal:
+    - State what is out of scope and which later change it waits on
+  specs:
+    - Requirements use the statement's words; a scenario is checkable by the crate's tests through the binary or by weir's conformance pack
+  tasks:
+    - Every task names its verification; site pages and ADRs land with the group that changes the behaviour they describe
+    - A change that adds a language, a file type, a crate or a directory under site/ has a task that puts it under treefmt, its linter and a check-fast moon task; a verification is a moon task the gate runs, or the task says why it can only be run by hand

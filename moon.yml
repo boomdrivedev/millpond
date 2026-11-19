@@ -6,9 +6,27 @@ tasks:
   # Every formatter treefmt.nix configures, writing nothing it would change
   # and keeping no cache outside the tree. It reads every tracked file: one
   # that no formatter claims and no exclude names fails it.
+  # Its key names only files the tree holds as it holds them, as sluice's
+  # check of a candidate's key reads them: moon globs a root task's inputs
+  # on the disk, past .gitignore, so they leave out each path .gitignore
+  # names, as Boomdrive Cloud's root:format does (its fdb4248).
   format:
     command: 'treefmt --ci'
-    inputs: ['/**/*', '!/.devenv/**', '!/.moon/cache/**', '!/site/node_modules/**', '!/site/dist/**', '!/site/.astro/**']
+    inputs:
+      - '/**/*'
+      - '!/.devenv/**/*'
+      - '!/.devenv.flake.nix'
+      - '!/devenv.local.nix'
+      - '!/.pre-commit-config.yaml'
+      - '!/.moon/cache/**/*'
+      - '!/result'
+      - '!/result/**/*'
+      - '!/site/node_modules/**/*'
+      - '!/site/dist/**/*'
+      - '!/site/.astro/**/*'
+      - '!/target/**/*'
+      - '!/**/.DS_Store'
+      - '!/site/shots/**/*'
     tags: [check-fast]
     options: {runFromWorkspaceRoot: true}
   # The README's prose, through Vale (.vale.ini, styles/Millpond). The

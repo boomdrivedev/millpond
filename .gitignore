@@ -11,3 +11,6 @@ devenv.local.nix
 /site/dist/
 /site/.astro/
 /site/shots/
+
+# cargo
+/target/

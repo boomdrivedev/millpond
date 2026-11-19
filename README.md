@@ -46,7 +46,6 @@ the same inboxes.
 | `site/` | the site, Astro with Starlight; its diagrams are drawn at build time (`site/README.md`) |
 | `docs/diagrams/` | the README's diagram, generated from the site's |
 | `devenv.nix` | the shell: moon through proto, Vale, bun, and Playwright with its Chromium |
-| `.config/kit.toml` | the kit standard's profile this repository follows |
 
 ```sh
 devenv shell -- site-build   # the site, through moon

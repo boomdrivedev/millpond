@@ -1,0 +1,77 @@
+-- allium: 3
+-- millpond at its seams (millpond 55, B.5, B.7; flume 228). millpond asks
+-- flume to launch a kind with an intent as its input, and reads sluice's
+-- record to show a landing.
+
+-- What millpond reads of flume and sluice. Their models, in their own
+-- repositories, state them; these are the fields millpond relies on.
+external entity End {
+    recipient: String
+}
+
+external entity Submission {
+    route: String?
+    status: queued | landed | failed | conflict | held | withdrawn
+}
+
+entity Intent {
+    hash: String
+    status: answered | routed | landed | closed
+
+    transitions status {
+        answered -> routed
+        routed -> landed
+        routed -> closed
+        landed -> closed
+        terminal: closed
+    }
+}
+
+rule IntentAnswered {
+    when: PersonAnswersYes(hash)
+    ensures: Intent.created(hash: hash, status: answered)
+}
+
+-- The person picks a kind that takes an intent (routed).
+rule Routed {
+    when: PersonPicksRoute(intent, place_name)
+    requires: intent.status = answered
+    ensures: intent.status = routed
+    ensures: Launch(place_name, intent, intent.hash, "millpond")
+}
+
+-- An intent shows a landing only from the merge queue's record (55).
+rule LandingShown {
+    when: s: Submission.status transitions_to landed
+    for intent in Intents where hash = s.route:
+        requires: intent.status = routed
+        ensures: intent.status = landed
+}
+
+-- millpond confirms the end flume owes it.
+rule MillpondConfirms {
+    when: end: End.created
+    requires: end.recipient = "millpond"
+    ensures: ConfirmEnd(end)
+}
+
+rule IntentClosed {
+    when: PersonCloses(intent)
+    requires: intent.status = routed or intent.status = landed
+    ensures: intent.status = closed
+}
+
+actor Person {
+    identified_by: Intent where hash != ""
+}
+
+surface Rail {
+    facing person: Person
+    context intent: Intent
+    exposes:
+        person.hash
+    provides:
+        PersonAnswersYes(hash)
+        PersonPicksRoute(intent, place_name) when intent.status = answered
+        PersonCloses(intent) when intent.status = routed or intent.status = landed
+}

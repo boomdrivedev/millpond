@@ -27,6 +27,9 @@ _: {
     "target/**"
     ".devenv/**"
     ".moon/cache/**"
+    # The design models, in Allium: Allium has no formatter; models:typecheck
+    # runs its checker over each model.
+    "*.allium"
   ];
 
   # The crate's Rust, with the pinned toolchain's rustfmt (devenv.nix).

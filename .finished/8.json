@@ -1,0 +1,27 @@
+{
+  "schema": "sluice/submission@1",
+  "id": 8,
+  "branch": "main",
+  "head": "16b8d8742ffdc800e5460300417a2d9555843254",
+  "from": {
+    "agent": "chore/millpond-keeps-its-seam-model",
+    "worktree": "pull/6",
+    "head": "chore/millpond-keeps-its-seam-model"
+  },
+  "submitted": "2026-11-24T01:22:42Z",
+  "after": [],
+  "priority": 0,
+  "attempt": 1,
+  "state": "landed",
+  "tested": {
+    "combination": "a31b0c995072a374e38587ad911d8f5344386a22",
+    "on": "75160113cd040775010edc68a26a9b6e81e61d5c",
+    "submissions": [
+      8
+    ]
+  },
+  "result": "passed",
+  "landed_as": "426068f218b166df3d2164d18a050671d2104858",
+  "subject": "millpond keeps its side of the tools' seams in Allium, checked in the fast tier",
+  "under_test_ms": 35000
+}

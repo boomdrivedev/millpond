@@ -1,0 +1,37 @@
+{
+  "schema": "sluice/submission@1",
+  "id": 6,
+  "branch": "main",
+  "head": "8df64f0ab4854da7d27f5f60cf99ed8ca3359d98",
+  "from": {
+    "agent": "docs/openspec-first-version",
+    "worktree": "pull/4",
+    "head": "docs/openspec-first-version"
+  },
+  "submitted": "2026-11-19T18:57:45Z",
+  "after": [],
+  "priority": 0,
+  "attempt": 1,
+  "state": "withdrawn",
+  "tested": {
+    "combination": "26f7e29d92171b06d3929cbd7bcb9a3e017d8af8",
+    "on": "86936071fbded76dd548167abe6d7fe05d6e6dc3",
+    "submissions": [
+      6
+    ]
+  },
+  "result": "failed",
+  "failed": [
+    {
+      "task": "root:format",
+      "hash": "6528be2ced89fdf353d00ccaf585de2a3764c25b62d763867136e823b4ad4872",
+      "log": "/Users/chuck/.local/share/boomdrive/repositories/boomdrivedev/millpond/millpond.git/sluice-remote/origin/.logs/main/c1/root:format.log",
+      "unsigned": "root:format: .pre-commit-config.yaml is not in the tree"
+    }
+  ],
+  "withdrawn": {
+    "by": "resubmission",
+    "at": "2026-11-19T19:03:16Z"
+  },
+  "subject": "docs(openspec): millpond's first version as OpenSpec records it"
+}
